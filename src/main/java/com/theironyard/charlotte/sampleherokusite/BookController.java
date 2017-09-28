@@ -1,7 +1,7 @@
 package com.theironyard.charlotte.sampleherokusite;
 
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.ui.Model;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +27,18 @@ public class BookController {
     @RequestMapping(path = "/books", method = RequestMethod.POST)
     public void addBook(@RequestBody Book book) {
         books.add(book);
-
     }
+
+    @CrossOrigin
+    @RequestMapping(path = "/check_in/{index}", method = RequestMethod.PATCH)
+    public void checkIn(@PathVariable("index") int index, Model model){
+        books.get(index).setCheckedOut(false);
+    }
+
+    @CrossOrigin
+    @RequestMapping(path = "/check_out/{index}", method = RequestMethod.PATCH)
+    public void checkOut(@PathVariable("index") int index, Model model){
+        books.get(index).setCheckedOut(true);
+    }
+
 }
