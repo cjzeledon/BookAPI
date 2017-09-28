@@ -56,4 +56,22 @@ public class BookController {
         books.get(index).setCheckedOut(true);
     }
 
+
+    /*
+    NOTE:
+
+    If you are using the Postman to see how this works, you need to make sure you are using the appropriate request
+    method such as GET, POST, PATCH, etc in accordance with the request mapping. Plus, since there is no actual
+    form being utilized, you are requesting and sending information as json. Spring will receive it as json and then
+    convert it to an object.
+
+    So, when you are in "POST" method, make sure you are using "body" then use "raw" and "JSON".
+
+    Since the checkIn and checkOut method uses the PATCH method with the PathVariable. So, in the Postman, you select
+    the book base on the index and just "send". It will automatically update the CheckedOut field to either true or
+    false base on which method you are using.
+
+
+     */
+
 }
