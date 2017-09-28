@@ -31,13 +31,28 @@ public class BookController {
 
     @CrossOrigin
     @RequestMapping(path = "/check_in/{index}", method = RequestMethod.PATCH)
-    public void checkIn(@PathVariable("index") int index, Model model){
+    public void checkIn(@PathVariable("index") int index){
         books.get(index).setCheckedOut(false);
     }
 
+    /*
+    This is another way to patch information on a single book
+    This will patch/update the entire object of a book
+    The FrontEnd will be responsible for creating their own code to select a specific book to update on
+
+    @CrossOrigin
+    @RequestMapping(path = "/check_in", method = RequestMethod.PATCH)
+    public void checkIn(@RequestBody Book book){
+    book.setCheckedOut(false);
+    }
+
+    Then you can make a copy of the previous code with the RequestBody and set the check out to true
+    */
+
+
     @CrossOrigin
     @RequestMapping(path = "/check_out/{index}", method = RequestMethod.PATCH)
-    public void checkOut(@PathVariable("index") int index, Model model){
+    public void checkOut(@PathVariable("index") int index){
         books.get(index).setCheckedOut(true);
     }
 
